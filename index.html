@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Registro eRAD · Volvo T8/T6 Recharge</title>
+<meta name="description" content="Registro independiente de fallos del eRAD en Volvo T8/T6 Recharge para documentar la escala del problema ante DVSA.">
+<meta name="theme-color" content="#14171C">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-title">
+      <span class="eyebrow">Expediente independiente de propietarios</span>
+      <h1>Registro de fallos eRAD<br><span class="model-range">Volvo T8 / T6 Recharge</span></h1>
+    </div>
+    <div class="masthead-stats" id="masthead-stats" aria-live="polite">
+      <div class="stat">
+        <span class="stat-value" id="stat-total">—</span>
+        <span class="stat-label">casos registrados</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="stat-waiting">—</span>
+        <span class="stat-label">esperando pieza</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="stat-avgdays">—</span>
+        <span class="stat-label">días de espera (media)</span>
+      </div>
+    </div>
+  </div>
+  <p class="masthead-note">
+    Este registro es independiente, mantenido por propietarios afectados. Los datos se recopilan para documentar
+    la escala del fallo del eRAD ante la DVSA. No está afiliado a Volvo Car Corporation.
+  </p>
+</header>
+
+<main>
+
+  <section class="panel" id="form-panel">
+    <div class="panel-head">
+      <span class="case-tag">NUEVO EXPEDIENTE</span>
+      <h2>Registra tu caso</h2>
+    </div>
+
+    <form id="case-form" novalidate>
+
+      <div class="field">
+        <label for="model_year">1 · Modelo y año</label>
+        <input type="text" id="model_year" name="model_year" placeholder="p. ej. XC90 T8, 2018" required maxlength="80">
+      </div>
+
+      <div class="field">
+        <label for="fail_date">2 · Fecha en la que falló el eRAD</label>
+        <input type="date" id="fail_date" name="fail_date" required>
+      </div>
+
+      <div class="field">
+        <label for="status">3 · Estado actual</label>
+        <select id="status" name="status" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="sin_diagnosticar">Sin diagnosticar todavía</option>
+          <option value="esperando_pieza">Diagnosticado — esperando la pieza</option>
+          <option value="reparado">Reparado</option>
+        </select>
+      </div>
+
+      <div class="field" id="days-field">
+        <label for="days_waiting">Días transcurridos (parado / hasta la reparación)</label>
+        <input type="number" id="days_waiting" name="days_waiting" min="0" max="3650" placeholder="p. ej. 45">
+      </div>
+
+      <div class="field">
+        <label for="backorder">4 · ¿La pieza estaba en backorder / sin stock?</label>
+        <select id="backorder" name="backorder" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+          <option value="no_se">No lo sé</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="dealer">5 · Concesionario / taller Volvo</label>
+        <input type="text" id="dealer" name="dealer" placeholder="p. ej. Cambridge Garage, Petersfield" required maxlength="120">
+      </div>
+
+      <div class="field checkbox-field">
+        <label class="checkbox-label">
+          <input type="checkbox" id="consent" name="consent" required>
+          <span>6 · Acepto que estos datos se incluyan de forma anónima en el registro público y en la presentación a la DVSA.</span>
+        </label>
+      </div>
+
+      <!-- honeypot anti-spam, oculto para humanos -->
+      <div class="hp-field" aria-hidden="true">
+        <label for="website">Deja este campo vacío</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button type="submit" id="submit-btn">Registrar caso</button>
+      <p class="form-status" id="form-status" role="status"></p>
+    </form>
+  </section>
+
+  <section class="panel" id="list-panel">
+    <div class="panel-head">
+      <span class="case-tag">EXPEDIENTES</span>
+      <h2>Casos registrados</h2>
+      <button class="refresh-btn" id="refresh-btn" title="Actualizar listado">↻</button>
+    </div>
+    <div id="case-list" class="case-list">
+      <p class="empty-state">Cargando expedientes…</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Datos alojados públicamente en GitHub · Los envíos pasan por un proxy que protege el acceso de escritura.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

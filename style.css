@@ -1,0 +1,344 @@
+:root {
+  --bg: #14171C;
+  --surface: #1B1F26;
+  --surface-2: #232833;
+  --border: #2E3440;
+  --text: #E7E9EC;
+  --muted: #8A93A3;
+  --accent: #3B6E8F;
+  --accent-soft: #2A4A5E;
+  --amber: #C97A2E;
+  --green: #4C9A6A;
+  --red: #B5482F;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); }
+
+/* ---------- Masthead ---------- */
+
+.masthead {
+  background: linear-gradient(180deg, #1A1E25 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 2rem 1.25rem 1.5rem;
+}
+
+.masthead-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.5rem;
+}
+
+.masthead h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.model-range {
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 1.15rem;
+}
+
+.masthead-stats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.25rem;
+}
+
+.masthead-note {
+  max-width: 960px;
+  margin: 1rem auto 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-left: 2px solid var(--border);
+  padding-left: 0.75rem;
+}
+
+/* ---------- Layout ---------- */
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 800px) {
+  main { grid-template-columns: 380px 1fr; align-items: start; }
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.panel-head h2 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin: 0;
+  width: 100%;
+  order: 2;
+}
+
+.case-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  order: 1;
+}
+
+.refresh-btn {
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 6px;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  order: 1;
+}
+.refresh-btn:active { transform: rotate(90deg); }
+
+/* ---------- Form ---------- */
+
+.field {
+  margin-bottom: 1rem;
+}
+
+.field label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.field input[type="text"],
+.field input[type="date"],
+.field input[type="number"],
+.field select {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.6rem 0.7rem;
+  border-radius: 6px;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.checkbox-field .checkbox-label {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  font-size: 0.85rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.checkbox-field input {
+  margin-top: 0.2rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+}
+
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+#submit-btn {
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+#submit-btn:hover { background: #47819F; }
+#submit-btn:disabled { background: var(--surface-2); color: var(--muted); cursor: wait; }
+
+.form-status {
+  min-height: 1.2rem;
+  font-size: 0.85rem;
+  margin-top: 0.6rem;
+}
+.form-status.ok { color: var(--green); }
+.form-status.error { color: var(--red); }
+
+/* ---------- Case list ---------- */
+
+.case-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.empty-state {
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.case-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--muted);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem 1rem;
+}
+
+.case-card.status-esperando_pieza { border-left-color: var(--amber); }
+.case-card.status-reparado { border-left-color: var(--green); }
+.case-card.status-sin_diagnosticar { border-left-color: var(--red); }
+
+.case-id {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.case-model {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0.1rem 0 0.3rem;
+}
+
+.case-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.8rem;
+}
+
+.case-meta span { white-space: nowrap; }
+
+.case-days {
+  text-align: right;
+  font-family: var(--font-mono);
+  align-self: center;
+}
+
+.case-days .n {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1;
+  display: block;
+}
+
+.case-days .unit {
+  font-size: 0.65rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-pill {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.1rem 0.45rem;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+}
+.status-esperando_pieza .status-pill { color: var(--amber); border-color: var(--amber); }
+.status-reparado .status-pill { color: var(--green); border-color: var(--green); }
+.status-sin_diagnosticar .status-pill { color: var(--red); border-color: var(--red); }
+
+footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted);
+  padding: 1.5rem 1rem 2.5rem;
+}
