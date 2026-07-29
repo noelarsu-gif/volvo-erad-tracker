@@ -3,7 +3,7 @@
 // ======================================================================
 // URL raw del data.json en tu repo público de GitHub (rama main).
 // Ejemplo: https://raw.githubusercontent.com/tuusuario/volvo-erad-tracker/main/data.json
-const GITHUB_RAW_URL = "https://raw.githubusercontent.com/USUARIO/REPO/main/data.json";
+const GITHUB_RAW_URL = "https://raw.githubusercontent.com/noelarsu-gif/volvo-erad-tracker/main/data.json";
 
 // URL del Cloudflare Worker que hace de proxy de escritura (paso 2 del README).
 // Ejemplo: https://volvo-erad-proxy.tuusuario.workers.dev
